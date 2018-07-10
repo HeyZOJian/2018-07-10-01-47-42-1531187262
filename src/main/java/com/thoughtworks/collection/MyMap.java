@@ -4,6 +4,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MyMap {
 
@@ -17,15 +18,32 @@ public class MyMap {
     }
 
     public List<Integer> getTriple() {
-        throw new NotImplementedException();
+        return array.stream()
+                .map((x) -> x * 3)
+                .collect(Collectors.toList());
     }
 
     public List<String> mapLetter() {
-        throw new NotImplementedException();
+        return array.stream()
+                .map((x) -> letters[x - 1])
+                .collect(Collectors.toList());
     }
 
     public List<String> mapLetters() {
-        throw new NotImplementedException();
+//        return array.stream()
+//                .map((x) -> {
+//                    String str = "";
+//                    int num = 25;
+//                    while (x>=25){
+//                        str += letters[x/num];
+//                        x/=25;
+//                        num *= 25;
+//                    }
+//                    str += letters[x];
+//                    return str;
+//                })
+//                .collect(Collectors.toList());
+        return null;
     }
 
     public List<Integer> sortFromBig() {
@@ -34,5 +52,18 @@ public class MyMap {
 
     public List<Integer> sortFromSmall() {
         throw new NotImplementedException();
+    }
+
+    public static void main(String[] args) {
+        //字母表映射
+        Integer[] array = new Integer[]{1, 13, 27, 30, 52, 53};
+        List<Integer> list = Arrays.asList(array);
+
+        MyMap myMap = new MyMap(list);
+
+        String[] result = new String[]{"a", "m", "aa", "ad", "az", "ba"};
+        List<String> resultList = Arrays.asList(result);
+
+        System.out.println(myMap.mapLetters());
     }
 }
